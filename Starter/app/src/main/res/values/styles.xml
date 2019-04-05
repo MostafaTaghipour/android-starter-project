@@ -1,0 +1,103 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!--******* Button **********-->
+    <style name="RaisedButton" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textAppearance">@style/Text.Button.AllCaps</item>
+    </style>
+
+    <style name="RaisedButton.NoMargin" parent="RaisedButton">
+        <item name="android:layout_marginBottom">-7dp</item>
+        <item name="android:layout_marginTop">-6dp</item>
+        <item name="android:layout_marginRight">-5dp</item>
+        <item name="android:layout_marginLeft">-5dp</item>
+    </style>
+
+    <style name="FlatButton" parent="Widget.AppCompat.Button.Borderless.Colored">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">@style/Text.Button.AllCaps</item>
+    </style>
+
+    <style name="FlatButton.NoPadding" parent="FlatButton">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+    </style>
+
+
+    <style name="Button.White" parent="Widget.AppCompat.Button.Colored">
+        <item name="colorButtonNormal">@android:color/white</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+
+    <!--******* TextView **********-->
+    <style name="AppTheme.TextViewStyle" parent="android:Widget.TextView">
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:textDirection">locale</item>
+        <item name="android:textAppearance">@style/Text.Body1</item>
+    </style>
+
+
+    <!--******* EditText **********-->
+    <style name="AppTheme.EditTextStyle" parent="@style/Widget.AppCompat.EditText">
+        <item name="android:textAlignment">viewStart</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:gravity">start|top</item>
+        <item name="android:textAppearance">@style/Text.Subhead</item>
+    </style>
+
+
+
+    <!--************************************* BEGIN TEXT APPEARANCE *********************************-->
+    <!-- ActionBar -->
+    <style name="Text.ActionBarTitle" parent="TextAppearance.AppCompat.Widget.ActionBar.Title" />
+
+    <!-- Toolbar -->
+    <style name="Text.ToolbarTitle" parent="TextAppearance.Widget.AppCompat.Toolbar.Title" />
+
+    <!-- Tab -->
+    <style name="Text.Tab" parent="TextAppearance.Design.Tab"/>
+
+    <!-- Menu -->
+    <style name="Text.Menu" parent="TextAppearance.AppCompat.Menu" />
+
+    <!-- Button -->
+    <style name="Text.Button" parent="TextAppearance.AppCompat.Button" />
+
+    <style name="Text.Button.AllCaps" parent="Text.Button">
+        <item name="android:textAllCaps">true</item>
+    </style>
+    <!--************************************* END TEXT APPEARANCE *********************************-->
+
+
+    <!--********** Other **************-->
+    <style name="SelectableView">
+        <item name="android:clickable">true</item>
+        <item name="android:foreground">?android:selectableItemBackground</item>
+        <item name="android:focusable">true</item>
+    </style>
+
+    <style name="SelectableView.BorderLess">
+        <item name="android:clickable">true</item>
+        <item name="android:foreground">?android:selectableItemBackgroundBorderless</item>
+        <item name="android:focusable">true</item>
+    </style>
+
+
+    <style name="hr">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:background">?android:attr/listDivider</item>
+    </style>
+
+    <style name="vr">
+        <item name="android:layout_width">0.5dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">?android:attr/listDivider</item>
+    </style>
+
+</resources>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_internet_connection">عدم دسترسی به اینترنت</string>
+    <string name="error_http_regular">خطا در برقراری ارتباط با سرور</string>
+</resources>

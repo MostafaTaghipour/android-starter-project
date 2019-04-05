@@ -1,0 +1,54 @@
+rootProject.appModulePlugins.top.each {
+    apply plugin: it
+}
+apply from: "$rootDir/signing/signing.gradle"
+apply from: "$rootDir/flavors.gradle"
+
+android {
+
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    defaultConfig {
+        applicationId "ir.rainyday.android.starter"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode versionMajor * 10000
+                    +versionMinor * 100
+                    +versionPatch
+        versionName "${versionMajor}.${versionMinor}.${versionPatch}"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+        vectorDrawables.useSupportLibrary = true
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+        }
+    }
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+    packagingOptions {
+        exclude 'META-INF/rxjava.properties'
+    }
+
+    androidExtensions {
+        experimental = true
+    }
+}
+
+
+
+dependencies {
+    rootProject.appModuleDependencies.each {
+        add(it.configuration, it.dependency, it.options)
+    }
+}
+
+rootProject.appModulePlugins.bottom.each {
+    apply plugin: it
+}

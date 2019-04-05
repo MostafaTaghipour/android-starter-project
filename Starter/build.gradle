@@ -1,0 +1,40 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+apply from: "$rootDir/dependencies.gradle"
+apply from: "$rootDir/versions.gradle"
+
+buildscript {
+
+    ext {
+        plugin_version = '3.2.1'
+        kotlin_version = '1.2.71'
+        google_services_version = '4.2.0'
+    }
+
+    repositories {
+        google()
+        jcenter()
+        maven {
+            url 'https://maven.fabric.io/public'
+        }
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:$plugin_version"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "com.google.gms:google-services:$google_services_version"
+        classpath 'io.fabric.tools:gradle:1.26.1'
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url 'https://maven.google.com' }
+        maven { url "https://jitpack.io" }
+        maven { url "http://dl.bintray.com/glomadrian/maven"}
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

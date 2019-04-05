@@ -1,0 +1,253 @@
+ext {
+
+
+    def archVersion = '2.0.0'
+    def retrofitVersion = '2.4.0'
+    def glideVersion = '4.8.0'
+    def leakcanaryVersion = '1.6.3'
+    def firebaseVersion = '16.0.7'
+    def gsonVersion = '2.5.8'
+
+
+
+    def androidLibs = [
+            kotlin             : [group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib-jdk7', version: kotlin_version],
+            material           : [group: 'com.google.android.material', name: 'material', version: '1.1.0-alpha03'],
+            appCompat          : [group: 'androidx.appcompat', name: 'appcompat', version: '1.1.0-alpha02'],
+            constraintlayout   : [group: 'androidx.constraintlayout', name: 'constraintlayout', version: '2.0.0-alpha3'],
+            multidex           : [group: 'androidx.multidex', name: 'multidex', version: '2.0.1'],
+            lifecycleExtensions: [group: 'androidx.lifecycle', name: 'lifecycle-extensions', version: archVersion],
+            lifecycleCompiler  : [group: 'androidx.lifecycle', name: 'lifecycle-compiler', version: archVersion],
+            roomRuntime        : [group: 'androidx.room', name: 'room-runtime', version: archVersion],
+            roomCompiler       : [group: 'androidx.room', name: 'room-compiler', version: archVersion]
+    ]
+
+    /**
+     * Firebase is Google's mobile platform
+     * @link "https://console.firebase.google.com"
+     */
+    def googleLibs = [
+            firebaseCore: [group: 'com.google.firebase', name: 'firebase-core', version: firebaseVersion],
+    ]
+
+
+    def networkLibs = [
+            /**
+             * Type-safe HTTP client for Android
+             * @link "https://github.com/square/retrofit"
+             */
+            retrofit                : [group: 'com.squareup.retrofit2', name: 'retrofit', version: retrofitVersion],
+            retrofitConverterGson   : [group: 'com.squareup.retrofit2', name: 'converter-gson', version: retrofitVersion],
+            retrofitAdapterRxjava2  : [group: 'com.squareup.retrofit2', name: 'adapter-rxjava2', version: retrofitVersion],
+
+            okHttpLoggingInterceptor: [group: 'com.github.ihsanbal', name: 'LoggingInterceptor', version: '3.0.0'],
+
+            /**
+             * A Java serialization/deserialization library to convert Java Objects into JSON and back
+             * @link "https://github.com/google/gson"
+             */
+            gson                    : [group: 'com.google.code.gson', name: 'gson', version: gsonVersion],
+
+            /**
+             * An image loading and caching library for Android
+             * @link "https://github.com/bumptech/glide"
+             */
+            glide                   : [group: 'com.github.bumptech.glide', name: 'glide', version: glideVersion],
+
+            glideCompiler           : [group: 'com.github.bumptech.glide', name: 'compiler', version: glideVersion],
+
+    ]
+
+    def otherLibs = [
+            /**
+             * Reactive Extensions for the JVM and Android
+             * @link "https://github.com/ReactiveX/RxJava"
+             * @link "https://github.com/ReactiveX/RxAndroid"
+             */
+            rxAndroid                 : [group: 'io.reactivex.rxjava2', name: 'rxandroid', version: '2.1.0'],
+            rxJava                    : [group: 'io.reactivex.rxjava2', name: 'rxjava', version: '2.2.4'],
+
+            /**
+             * A pragmatic lightweight dependency injection framework for Kotlin
+             * @link "https://insert-koin.io"
+             */
+            koin                      : [group: 'org.koin', name: 'koin-android-viewmodel', version: '2.0.0-beta-4'],
+
+            /**
+             * Wrapper of the ObjectAnimator that can be used similarly to ViewPropertyAnimator
+             * @link "https://github.com/blipinsk/ViewPropertyObjectAnimator"
+             */
+            viewPropertyObjectAnimator: [group: 'com.bartoszlipinski', name: 'viewpropertyobjectanimator', version: '1.4.5'],
+
+            /**
+             * Android Shared preference wrapper than encrypts the values of Shared Preferences
+             * @link "https://github.com/scottyab/secure-preferences"
+             */
+            securePeferences          : [group: 'com.scottyab', name: 'secure-preferences-lib', version: '0.1.4'],
+
+            /**
+             * The usual Toast, but with steroids
+             * @link "https://github.com/GrenderG/Toasty"
+             */
+            toasty                    : [group: 'com.github.GrenderG', name: 'Toasty', version: '1.2.5'],
+
+            /**
+             * A memory leak detection library for Android
+             * @link "https://github.com/square/leakcanary"
+             */
+            leakcanaryDebug           : [group: 'com.squareup.leakcanary', name: 'leakcanary-android', version: leakcanaryVersion],
+            leakcanaryFragment        : [group: 'com.squareup.leakcanary', name: 'leakcanary-support-fragment', version: leakcanaryVersion],
+            leakcanaryRelease         : [group: 'com.squareup.leakcanary', name: 'leakcanary-android-no-op', version: leakcanaryVersion],
+
+            /**
+             * Firebase Crashlytics is a lightweight, realtime crash reporter
+             * @link "https://firebase.google.com/docs/crashlytics/get-started"
+             */
+            crashLytics               : [group: 'com.crashlytics.sdk.android', name: 'crashlytics', version: '2.9.9'],
+    ]
+
+    def myLibs = [
+            /**
+             * A data-driven RecyclerView framework for building fast and flexible lists
+             * @link "https://github.com/MostafaTaghipour/AndroidEasyList"
+             */
+            androidEasyList: [group: 'com.github.mostafataghipour', name: 'androideasylist', version: '1.0.6'],
+
+            /**
+             * A font manager for Android to apply custom font to whole app
+             * @link "https://github.com/MostafaTaghipour/fontManager"
+             */
+            fontManager    : [group: 'com.github.mostafataghipour', name: 'fontmanager', version: '1.0.0'],
+
+            /**
+             * An Android theme manager with all the feature
+             * @link "https://github.com/MostafaTaghipour/themeManager"
+             */
+            themeManager   : [group: 'com.github.mostafataghipour', name: 'thememanager', version: '1.0.0'],
+
+            /**
+             * The best choice for you if you want to have a multi-language
+             * @link "https://github.com/MostafaTaghipour/LocaleManager"
+             */
+            localeManager  : [group: 'com.github.mostafataghipour', name: 'localemanager', version: '1.0.0'],
+    ]
+
+
+    def testLibs = [
+            junit       : [group: 'junit', name: 'junit', version: '4.12'],
+            espressoCore: [group: 'androidx.test.espresso', name: 'espresso-core', version: '3.1.1']
+    ]
+
+
+    def modules = [
+            common: ':common'
+    ]
+
+    def plugins = [
+            application           : 'com.android.application',
+            library               : 'com.android.library',
+            kotlinAndroid         : 'kotlin-android',
+            kotlinAndroidExtension: 'kotlin-android-extensions',
+            kotlinKapt            : 'kotlin-kapt',
+            fabric                : 'io.fabric',
+            googleService         : 'com.google.gms.google-services'
+    ]
+
+    appModuleDependencies = [
+
+            // Android
+            [configuration: "implementation", dependency: androidLibs.kotlin],
+            [configuration: "implementation", dependency: androidLibs.appCompat],
+            [configuration: "implementation", dependency: androidLibs.material],
+            [configuration: "implementation", dependency: androidLibs.constraintlayout],
+            [configuration: "api", dependency: androidLibs.multidex],
+            [configuration: "implementation", dependency: androidLibs.lifecycleExtensions],
+            [configuration: "kapt", dependency: androidLibs.lifecycleCompiler],
+            [configuration: "api", dependency: androidLibs.roomRuntime],
+            [configuration: "kapt", dependency: androidLibs.roomCompiler],
+
+            // Google
+            [configuration: "implementation", dependency: googleLibs.firebaseCore, options: {
+                force = true
+            }],
+
+            // Network
+            [configuration: "implementation", dependency: networkLibs.retrofit],
+            [configuration: "implementation", dependency: networkLibs.retrofitConverterGson],
+            [configuration: "implementation", dependency: networkLibs.retrofitAdapterRxjava2],
+            [configuration: "implementation", dependency: networkLibs.okHttpLoggingInterceptor, options: {
+                exclude group: 'org.json', module: 'json'
+            }],
+            [configuration: "implementation", dependency: networkLibs.gson],
+            [configuration: "implementation", dependency: networkLibs.glide],
+            [configuration: "kapt", dependency: networkLibs.glideCompiler],
+
+            // My Libs
+            [configuration: "implementation", dependency: myLibs.fontManager],
+            [configuration: "implementation", dependency: myLibs.localeManager],
+            [configuration: "implementation", dependency: myLibs.themeManager],
+            [configuration: "implementation", dependency: myLibs.androidEasyList, options: {
+                exclude module: 'recyclerview-v7'
+            }],
+
+            // Other
+            [configuration: "implementation", dependency: otherLibs.rxJava],
+            [configuration: "implementation", dependency: otherLibs.rxAndroid],
+            [configuration: "implementation", dependency: otherLibs.koin],
+            [configuration: "implementation", dependency: otherLibs.securePeferences],
+            [configuration: "implementation", dependency: otherLibs.toasty],
+            [configuration: "implementation", dependency: otherLibs.viewPropertyObjectAnimator],
+            [configuration: "debugImplementation", dependency: otherLibs.leakcanaryDebug],
+            [configuration: "debugImplementation", dependency: otherLibs.leakcanaryFragment],
+            [configuration: "releaseImplementation", dependency: otherLibs.leakcanaryRelease],
+            [configuration: "implementation", dependency: otherLibs.crashLytics],
+
+            // Jars
+            [configuration: "implementation", dependency: fileTree(include: ['*.jar'], dir: 'libs')],
+
+            // Modules
+            [configuration: "implementation", dependency: project(modules.common)],
+
+            // Test
+            [configuration: "testImplementation", dependency: testLibs.junit],
+            [configuration: "androidTestImplementation", dependency: testLibs.espressoCore, options: {
+                exclude group: 'com.android.support', module: 'support-annotations'
+            }],
+    ]
+
+
+    appModulePlugins = [
+            top   : [
+                    plugins.application,
+                    plugins.kotlinAndroid,
+                    plugins.kotlinAndroidExtension,
+                    plugins.kotlinKapt,
+                   // plugins.fabric
+            ],
+            bottom: [
+                    //plugins.googleService
+            ]
+    ]
+
+
+    commonModuleDependencies = [
+
+            // Android
+            [configuration: "implementation", dependency: androidLibs.kotlin],
+            [configuration: "implementation", dependency: androidLibs.appCompat],
+
+            // Jars
+            [configuration: "implementation", dependency: fileTree(include: ['*.jar'], dir: 'libs')],
+
+            // Test
+            [configuration: "testImplementation", dependency: testLibs.junit],
+            [configuration: "androidTestImplementation", dependency: testLibs.espressoCore, options: {
+                exclude group: 'com.android.support', module: 'support-annotations'
+            }],
+    ]
+
+    commonModulePlugins = [
+            plugins.library,
+            plugins.kotlinAndroid
+    ]
+}

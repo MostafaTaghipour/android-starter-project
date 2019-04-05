@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--BEGIN PRETTY TIME-->
+    <string name="time_ago_prefix"></string>
+    <string name="time_ago_suffix">پیش</string>
+    <string name="time_ago_moment">چند لحظه</string>
+    <string name="time_ago_seconds">کمتر از یک دقیقه</string>
+    <string name="time_ago_minute">حدود یک دقیقه</string>
+    <string name="time_ago_minutes">%d دقیقه</string>
+    <string name="time_ago_hour">حدود یک ساعت</string>
+    <string name="time_ago_hours">حدود %d ساعت</string>
+    <string name="time_ago_day">حدود یک روز</string>
+    <string name="time_ago_days">%d روز</string>
+    <string name="time_ago_month">حدود یک ماه</string>
+    <string name="time_ago_months">%d ماه</string>
+    <string name="time_ago_year">حدود یک سال</string>
+    <string name="time_ago_years">%d سال</string>
+    <!--END PRETTY TIME-->
+
+</resources>

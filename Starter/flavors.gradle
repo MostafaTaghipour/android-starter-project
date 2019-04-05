@@ -1,0 +1,40 @@
+
+android {
+
+    //https://medium.com/@mds6058/breaking-down-android-flavor-dimensions-4ea97fbac8a4
+    flavorDimensions "version"
+
+    //todo
+    productFlavors {
+        development {
+            dimension "version"
+            applicationIdSuffix ".dev"
+            versionNameSuffix "-dev"
+            resValue "string", "app_name", "Starter (dev)"
+        }
+
+        staging {
+            dimension "version"
+            applicationIdSuffix ".stg"
+            versionNameSuffix "-stg"
+            resValue "string", "app_name", "Starter (stg)"
+        }
+
+        production {
+            dimension "version"
+            resValue "string", "app_name", "Starter"
+        }
+    }
+
+
+    applicationVariants.all { variant ->
+        print(variant.name)
+    }
+
+    // Disable devRelease
+    variantFilter { variant ->
+        if (variant.buildType.name == 'release' && variant.getFlavors().get(0).name == 'development') {
+            variant.setIgnore(true)
+        }
+    }
+}
