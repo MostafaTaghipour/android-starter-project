@@ -9,7 +9,7 @@ echo "   >>>>>> Initializing project... , please wait"
 
 mv starter $projectName
 cd $projectName
-mv starter.iml $projectName.iml
+#mv starter.iml $projectName.iml
 
 projectDir=$(pwd)
 packagePath="${packageName//./$'/'}"
@@ -92,8 +92,8 @@ open -a /Applications/Android\ Studio.app "./$projectName"
 #cp -r MTP\ Templates ~/Library/Developer/Xcode/Templates/File\ Templates
 #echo "   >>>>>> 'MTP Templates' moved to Xcode templates"
 #rm -R MTP\ Templates
-#rm -R screenshots
-#rm -R README.md
+rm -R screenshots
+rm -R README.md
 
 
 echo "   >>>>>> extra files removed"
