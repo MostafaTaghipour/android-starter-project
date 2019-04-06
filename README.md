@@ -1,4 +1,4 @@
-# Android Project Starter
+# Android Starter Project
 
 A template for creating a new Android project with our preferred project organization and default setting.
 
