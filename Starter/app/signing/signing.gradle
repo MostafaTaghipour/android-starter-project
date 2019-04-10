@@ -1,4 +1,4 @@
-def propsFile = file("$rootDir/signing/signing.properties")
+def propsFile = file("$rootDir/app/signing/signing.properties")
 def buildType = "release"
 
 if (!propsFile.exists()) throw new IllegalStateException("signing/signing.properties file missing")
@@ -6,7 +6,7 @@ if (!propsFile.exists()) throw new IllegalStateException("signing/signing.proper
 def props = new Properties()
 props.load(new FileInputStream(propsFile))
 
-def keystoreFile = file("$rootDir/signing/${props['storeFile']}")
+def keystoreFile = file("$rootDir/app/signing/${props['storeFile']}")
 if (!keystoreFile.exists()) throw new IllegalStateException("signing/keystore.jks file missing")
 
 android.signingConfigs.create(buildType, {
