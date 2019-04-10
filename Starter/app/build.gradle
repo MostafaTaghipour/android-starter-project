@@ -1,8 +1,8 @@
 rootProject.appModulePlugins.top.each {
     apply plugin: it
 }
-apply from: "$rootDir/signing/signing.gradle"
-apply from: "$rootDir/flavors.gradle"
+apply from: "$rootDir/app/signing/signing.gradle"
+apply from: "$rootDir/app/flavors.gradle"
 
 android {
 

@@ -38,10 +38,12 @@ find . -type f \( -name "*xml" -o -name "*.java" -o -name "*.gradle" -o -name "*
 
 
 find . -name 'versions.gradle' -print0 | xargs -0 sed -i "" "s/17/$minSDK/g"
+
+cd app
 find . -name 'flavors.gradle' -print0 | xargs -0 sed -i "" "s/Starter/$projectName/g"
 
 
-cd "app/src/main/java/$packagePath/app"
+cd "src/main/java/$packagePath/app"
 find . -name 'App.kt' -print0 | xargs -0 sed -i "" "s/Locale(\"fa\")/Locale(\"$locale\")/g"
 
 cd "$projectDir"
