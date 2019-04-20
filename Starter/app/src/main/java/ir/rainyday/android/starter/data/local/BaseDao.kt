@@ -1,4 +1,4 @@
-package ir.rainyday.android.data.local
+package ir.rainyday.android.starter.data.local
 
 import androidx.room.Delete
 import androidx.room.Insert
