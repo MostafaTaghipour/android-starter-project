@@ -18,7 +18,7 @@
  */
 package ir.rainyday.android.starter.modules.shared
 
-import ir.rainyday.android.starter.modules.sample.SampleActivity
+
 import ir.rainyday.android.starter.modules.splash.SplashActivity
 import ir.rainyday.android.common.helpers.startActivity
 import ir.rainyday.android.common.supers.SuperRouter

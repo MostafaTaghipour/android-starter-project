@@ -1,6 +1,6 @@
-package com.app.example.app
+package ir.rainyday.android.starter.app
 
-import com.app.example.modules.sample.sampleModule
+
 import org.koin.core.module.Module
 
 object DIModules {
@@ -8,6 +8,7 @@ object DIModules {
         get() {
             return listOf(
                     appModule,
+                    //sampleModule
                     // add modules here
             )
         }

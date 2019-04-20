@@ -6,8 +6,6 @@ import androidx.room.TypeConverter
 import androidx.room.TypeConverters
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import ir.rainyday.android.starter.modules.sample.SampleDao
-import ir.rainyday.android.starter.modules.sample.SampleEntity
 import ir.rainyday.android.common.helpers.ioThread
 import java.util.*
 

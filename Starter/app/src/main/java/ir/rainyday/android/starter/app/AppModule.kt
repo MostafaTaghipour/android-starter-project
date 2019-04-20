@@ -1,13 +1,12 @@
-package com.app.example.app
+package ir.rainyday.android.starter.app
 
 import android.preference.PreferenceManager
 import android.view.ContextThemeWrapper
 import androidx.room.Room
 import com.google.gson.GsonBuilder
-import com.app.example.BuildConfig
-import com.app.example.modules.sample.sampleModule
-import com.app.example.net.*
 import com.ihsanbal.logging.Level
+import ir.rainyday.android.starter.BuildConfig
+import ir.rainyday.android.starter.net.*
 import com.securepreferences.SecurePreferences
 import io.reactivex.schedulers.Schedulers
 import ir.rainyday.android.common.helpers.CurrentDevice
@@ -18,9 +17,6 @@ import ir.rainyday.thememanager.ThemeManager
 import okhttp3.OkHttpClient
 import okhttp3.internal.platform.Platform
 import org.koin.android.ext.koin.androidApplication
-import org.koin.android.ext.koin.androidContext
-import org.koin.core.logger.EmptyLogger
-import org.koin.core.module.Module
 import org.koin.core.parameter.parametersOf
 import org.koin.core.qualifier.StringQualifier
 import org.koin.dsl.module
