@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<template
+        format="5"
+        revision="6"
+        name="MVVM module"
+        description="Creates a new MVVM module.">
+
+    <category value="MTP Templates"/>
+    <formfactor value="Mobile"/>
+
+    <parameter
+            id="moduleName"
+            name="Module Name"
+            type="string"
+            constraints="nonempty"
+            default="New"
+            help="The name of the MVVM module to create"/>
+
+
+
+ <parameter
+            id="viewType"
+            name="View Type"
+            type="enum"
+            default="activity"
+            help="The type of view of module, can be activity or fragment" >
+            <option id="activity">Activity</option>
+            <option id="fragment">Fragment</option>
+    
+    </parameter>
+
+
+ <parameter
+            id="includeBaseClasses"
+            name="Create MVVM Base Classes"
+            type="boolean"
+            default="true"
+            help="If you need to create base classes (BaseViewModel , BaseView , ...) check this" />
+
+
+ <parameter
+            id="includeWebApi"
+            name="Include Web Api"
+            type="boolean"
+            default="true"
+            help="If you need to connect to remote api check this" />
+
+
+ <parameter
+            id="includeLocale"
+            name="Include Locale Persist"
+            type="boolean"
+            default="true"
+            help="If you need to persist data check this" />
+
+    <!-- 128x128 thumbnails relative to template.xml -->
+    <thumbs>
+        <!-- default thumbnail is required -->
+        <thumb>template_mtp_mvvm_template.png</thumb>
+    </thumbs>
+
+    <globals file="globals.xml.ftl"/>
+    <execute file="recipe.xml.ftl"/>
+
+</template>

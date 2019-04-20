@@ -11,7 +11,7 @@ A template for creating a new Android project with our preferred project organiz
 - [x] Local DB
 - [x] Localized Strings file
 - [x] Analytics
-
+- [x] Module templates (MVVM, MVP, VIPER)
 
 Dependencies:
 
@@ -39,6 +39,21 @@ Answer the questions
 Wait until the setup of the project and install dependencies are completed
 
 Enjoy it
+
+## Module templates
+
+The project also includes templates to add modules 
+
+![templates](/screenshots/2.png)
+
+![module](/screenshots/3.png)
+
+Templates:
+- [x] MVVM
+- [ ] MVP
+- [ ] VIPER
+
+
 
 
 ## Author

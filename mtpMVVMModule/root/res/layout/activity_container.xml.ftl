@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
+<${getMaterialComponentName('android.support.constraint.ConstraintLayout', useAndroidX)}
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="ir.rainyday.android.starter.modules.sample.SampleActivity">
+    tools:context="${appPackage}.modules.${moduleNameLower}.${moduleName}Activity">
 
     <include layout="@layout/layout_regular_app_bar" />
 
-    <include layout="@layout/content_sample" />
+    <include layout="@layout/content_${moduleNameLower}" />
 
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</${getMaterialComponentName('android.support.constraint.ConstraintLayout', useAndroidX)}>

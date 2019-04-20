@@ -6,9 +6,6 @@ import ir.rainyday.android.starter.data.model.json.HttpErrorBody
 import ir.rainyday.android.starter.helpers.inject
 import ir.rainyday.android.starter.net.HttpStatusCode
 
-/**
- * Created by taghipour on 21/10/2017.
- */
 
 class HttpException (throwable: Throwable ) : BaseException(throwable){
     var statusCode: HttpStatusCode? = null

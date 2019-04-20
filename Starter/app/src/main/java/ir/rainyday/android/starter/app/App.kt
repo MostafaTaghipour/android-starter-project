@@ -1,6 +1,5 @@
 package ir.rainyday.android.starter.app
 
-
 import android.content.Context
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.multidex.MultiDex
@@ -20,9 +19,6 @@ import org.koin.core.logger.EmptyLogger
 import java.util.*
 
 
-/**
- * Created by mostafataghipour on 6/25/2016 AD.
- */
 class App : SuperApplication(), NetworkStateReceiver.Listener {
 
     lateinit var networkInfo: NetworkInfo
@@ -75,7 +71,7 @@ class App : SuperApplication(), NetworkStateReceiver.Listener {
         startKoin {
             androidContext(this@App)
             EmptyLogger()
-            modules( AppDI.getModules)
+            modules( DIModules.getModules)
         }
 
         return applicationContext
@@ -100,3 +96,4 @@ class App : SuperApplication(), NetworkStateReceiver.Listener {
     }
 
 }
+

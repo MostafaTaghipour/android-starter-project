@@ -1,8 +1,6 @@
 package ir.rainyday.android.starter.app
 
-/**
- * Created by taghipour on 10/10/2017.
- */
+
 object AppConst {
 
     const val APP_ACCENT_COLOR_KEY="accentColor"

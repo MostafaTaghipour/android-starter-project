@@ -24,9 +24,6 @@ import ir.rainyday.android.common.helpers.startActivity
 import ir.rainyday.android.common.supers.SuperRouter
 
 
-/**
- * Class used to navigate through the application.
- */
 
 
 object Navigator : SuperRouter {
@@ -36,10 +33,10 @@ object Navigator : SuperRouter {
         //todo unimplemented
     }
 
-    fun sample(splashActivity: SplashActivity) {
-        splashActivity.startActivity<SampleActivity>()
-        splashActivity.finish()
-    }
+//    fun sample(splashActivity: SplashActivity) {
+//        splashActivity.startActivity<SampleActivity>()
+//        splashActivity.finish()
+//    }
 
 }
 

@@ -1,8 +1,8 @@
-package ir.rainyday.android.starter.modules.sample
+package  ${appPackage}.data.model.json
 
 import com.google.gson.annotations.SerializedName
 
-data class SampleJson(
+data class ${moduleName}Json(
         @SerializedName("Id") val id: Long,
         @SerializedName("Title") val title: String
 )

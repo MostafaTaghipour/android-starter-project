@@ -12,25 +12,22 @@ import ir.rainyday.android.common.helpers.ioThread
 import java.util.*
 
 
-/**
- * Created by taghipour on 20/11/2017.
- */
 @Database(entities = arrayOf(
-        SampleEntity::class
-        //todo add entities here
+      //  SampleEntity::class
+        // add entities here
 ), version = 1, exportSchema = false)
 @TypeConverters(
         CommonConverter::class
 )
 abstract class AppDataBase : RoomDatabase() {
     fun clean() = ioThread {
-        sampleDao().clear()
-        //todo clear dao here
+       // sampleDao().clear()
+        // clear dao here
     }
 
     //DAOs
-    abstract fun sampleDao(): SampleDao
-    //todo declare dao here
+    //abstract fun sampleDao(): SampleDao
+    // declare dao here
 }
 
 

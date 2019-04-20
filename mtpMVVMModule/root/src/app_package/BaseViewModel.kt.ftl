@@ -1,24 +1,20 @@
-package ir.rainyday.android.starter.modules.shared.base
+package ${appPackage}.modules.shared.base
 
 import android.content.Intent
 import androidx.annotation.CallSuper
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
-import ir.rainyday.android.starter.errors.HttpException
-import ir.rainyday.android.starter.extras.Event
-import ir.rainyday.android.starter.extras.LiveBus
-import ir.rainyday.android.starter.helpers.inject
-import ir.rainyday.android.starter.modules.shared.events.HttpErrorEvent
-import ir.rainyday.android.starter.modules.shared.events.NoInternetAccessEvent
-import ir.rainyday.android.starter.net.CredentialsKeysRepo
+import ${appPackage}.errors.HttpException
+import ${appPackage}.extras.Event
+import ${appPackage}.extras.LiveBus
+import ${appPackage}.helpers.inject
+import ${appPackage}.modules.shared.events.HttpErrorEvent
+import ${appPackage}.modules.shared.events.NoInternetAccessEvent
+import ${appPackage}.net.CredentialsKeysRepo
 import io.reactivex.disposables.CompositeDisposable
 import ir.rainyday.android.common.helpers.NetworkInfo
 
-
-/**
-* Created by taghipour on 09/10/2017.
-*/
 
 
 abstract class BaseViewModel : ViewModel() {

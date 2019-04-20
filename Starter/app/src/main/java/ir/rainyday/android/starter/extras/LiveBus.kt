@@ -1,8 +1,6 @@
 package ir.rainyday.android.starter.extras
 
-/**
- * Created by taghipour on 18/10/2017.
- */
+
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer

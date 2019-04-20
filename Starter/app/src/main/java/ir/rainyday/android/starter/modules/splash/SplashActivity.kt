@@ -18,7 +18,7 @@ class SplashActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        Navigator.sample(this)
+//        Navigator.sample(this)
     }
 
 }

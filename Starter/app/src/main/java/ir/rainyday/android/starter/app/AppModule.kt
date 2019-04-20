@@ -1,12 +1,12 @@
-package ir.rainyday.android.starter.app
+package com.app.example.app
 
 import android.preference.PreferenceManager
 import android.view.ContextThemeWrapper
 import androidx.room.Room
 import com.google.gson.GsonBuilder
-import ir.rainyday.android.starter.BuildConfig
-import ir.rainyday.android.starter.modules.sample.sampleModule
-import ir.rainyday.android.starter.net.*
+import com.app.example.BuildConfig
+import com.app.example.modules.sample.sampleModule
+import com.app.example.net.*
 import com.ihsanbal.logging.Level
 import com.securepreferences.SecurePreferences
 import io.reactivex.schedulers.Schedulers
@@ -115,17 +115,5 @@ val appModule = module {
     //endregion
 }
 
-//region start koin
-object AppDI {
-    val getModules: Iterable<Module>
-        get() {
-            return listOf(
-                    appModule,
-                    sampleModule
-                    // todo: add modules here
-            )
-        }
-}
-//endregion
 
 

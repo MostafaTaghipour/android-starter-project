@@ -1,4 +1,4 @@
-package ir.rainyday.android.starter.modules.shared.base
+package ${appPackage}.modules.shared.base
 
 import android.content.Context
 import android.content.Intent
@@ -8,9 +8,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
-import ir.rainyday.android.starter.R
-import ir.rainyday.android.starter.helpers.*
-import ir.rainyday.android.starter.modules.shared.events.*
+import ${appPackage}.R
+import ${appPackage}.helpers.*
+import ${appPackage}.modules.shared.events.*
 import io.reactivex.disposables.CompositeDisposable
 import ir.rainyday.android.common.helpers.dismissKeyboard
 import ir.rainyday.android.common.helpers.launchInternetSetting
@@ -19,10 +19,6 @@ import ir.rainyday.fontmanager.FontManager
 import ir.rainyday.localemanager.LocaleManager
 import ir.rainyday.thememanager.ThemeManager
 
-
-/**
- * Created by taghipour on 09/10/2017.
- */
 
 
 abstract class BaseMvvmActivity<VM : BaseViewModel> : AppCompatActivity() {
