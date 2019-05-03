@@ -10,10 +10,14 @@ import ir.rainyday.android.common.helpers.ioThread
 import java.util.*
 
 
-@Database(entities = arrayOf(
-      //  SampleEntity::class
-        // add entities here
-), version = 1, exportSchema = false)
+@Database(
+        entities = [
+            //  SampleEntity::class
+            // add entities here
+        ],
+        version = 1,
+        exportSchema = false
+)
 @TypeConverters(
         CommonConverter::class
 )

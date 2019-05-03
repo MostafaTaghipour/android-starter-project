@@ -7,8 +7,8 @@ object DIModules {
     val getModules: Iterable<Module>
         get() {
             return listOf(
-                    appModule,
-                    //sampleModule
+                    appModule
+                    //, sampleModule
                     // add modules here
             )
         }

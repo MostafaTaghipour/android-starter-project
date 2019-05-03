@@ -1,8 +1,8 @@
 #! /bin/bash
-read -p "   <<<<<< Enter Your App Name: "  projectName
-read -p "   <<<<<< Enter Your App PackageName/Id: "  packageName
-read -p "   <<<<<< Enter Your App minSdkVersion (default is 17): "  minSDK
-read -p "   <<<<<< Enter Your App Locale (fa/en, default is fa): "  locale
+read -p "   <<<<<< Enter Your Project Name: "  projectName
+read -p "   <<<<<< Enter Your Project PackageName/Id: "  packageName
+read -p "   <<<<<< Enter Your Project minSdkVersion (default is 17): "  minSDK
+read -p "   <<<<<< Enter Your Project Locale (fa/en, default is fa): "  locale
 
 echo "   >>>>>> Initializing project... , please wait"
 

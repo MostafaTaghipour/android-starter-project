@@ -4,7 +4,7 @@ package ir.rainyday.android.common.supers
 /**
  * Created by taghipour on 09/10/2017.
  */
-abstract class SuperDialogFragment : androidx.fragment.app.Fragment() {
+abstract class SuperFragment : androidx.fragment.app.Fragment() {
 
     //region fragment visibility
     private var mIsVisibleToUser: Boolean = false // you can see this variable may absolutely <=> getUserVisibleHint() but it not. Currently, after many test I find that

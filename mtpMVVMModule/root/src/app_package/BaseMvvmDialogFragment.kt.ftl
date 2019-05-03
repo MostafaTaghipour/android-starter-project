@@ -1,45 +1,39 @@
 package ${appPackage}.modules.shared.base
 
-import androidx.lifecycle.Observer
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
-import ${appPackage}.helpers.*
-import ${appPackage}.modules.shared.events.*
+import androidx.lifecycle.Observer
+import ${appPackage}.helpers.errorToast
+import ${appPackage}.helpers.infoToast
+import ${appPackage}.helpers.successToast
+import ${appPackage}.helpers.warningToast
+import ${appPackage}.modules.shared.events.FinishEvent
+import ${appPackage}.modules.shared.events.HttpErrorEvent
+import ${appPackage}.modules.shared.events.MessageEvent
+import ${appPackage}.modules.shared.events.MessageType
 import io.reactivex.disposables.CompositeDisposable
-import ir.rainyday.android.common.helpers.*
+import ir.rainyday.android.common.helpers.dismissKeyboard
+import ir.rainyday.android.common.helpers.toast
 
 
-
-abstract class BaseMvvmDialogFragment<VM : BaseViewModel> : androidx.fragment.app.DialogFragment() {
+abstract class BaseMvvmDialogFragment<VM : BaseViewModel> : BaseDialogFragment() {
 
 
     protected var viewModel: VM? = null
     protected val disposable by lazy { CompositeDisposable() }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return context!!.inflateLayout(getContentView(), container)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = generateViewModel()
-        setupView()
+        if (viewModel != null) {
+            subscribeEvents()
+            onViewModelReady(viewModel!!)
+        }
 
-        if (viewModel != null)
-            onReady(savedInstanceState, viewModel!!)
-        else
-            onReady(savedInstanceState)
-    }
-
-    private fun setupView() {
-        viewModel?.observeEvent(this, HttpErrorEvent::class.java, Observer { errorEvent -> onHttpError(errorEvent) })
-        viewModel?.observeEvent(this, MessageEvent::class.java, Observer { event -> onMessageEvent(event) })
-        viewModel?.observeEvent(this, FinishEvent::class.java, Observer { event -> onFinishEvent(event) })
     }
 
     override fun onDestroy() {
@@ -57,12 +51,21 @@ abstract class BaseMvvmDialogFragment<VM : BaseViewModel> : androidx.fragment.ap
         viewModel?.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 
+    //region Events
+    private fun subscribeEvents() {
+        viewModel?.observeEvent(this, HttpErrorEvent::class.java, Observer { errorEvent -> onHttpError(errorEvent) })
+        viewModel?.observeEvent(this, MessageEvent::class.java, Observer { event -> onMessageEvent(event) })
+        viewModel?.observeEvent(this, FinishEvent::class.java, Observer { event -> onFinishEvent(event) })
+    }
+
     protected open fun onHttpError(event: HttpErrorEvent?) {
         event?.error?.localizedDescription?.let {
             context?.errorToast(it, duration = Toast.LENGTH_LONG)
             event.handled = true
         }
     }
+
+
 
     protected open fun onMessageEvent(event: MessageEvent?) {
         event?.let {
@@ -71,7 +74,7 @@ abstract class BaseMvvmDialogFragment<VM : BaseViewModel> : androidx.fragment.ap
                 MessageType.ERROR -> context?.errorToast(event.message, event.duration)
                 MessageType.INFO -> context?.infoToast(event.message, event.duration)
                 MessageType.WARNING -> context?.warningToast(event.message, event.duration)
-                else -> toast(event.message,event.duration)
+                else -> toast(event.message, event.duration)
             }
             event.handled = true
         }
@@ -83,14 +86,9 @@ abstract class BaseMvvmDialogFragment<VM : BaseViewModel> : androidx.fragment.ap
             dismiss()
         }
     }
+    //endregion
 
-    override fun onDismiss(dialog: DialogInterface) {
-        activity?.dismissKeyboard()
-        super.onDismiss(dialog)
-    }
 
-    abstract fun getContentView(): Int
     open fun generateViewModel(): VM? = null
-    open fun onReady(savedInstanceState: Bundle?) {}
-    open fun onReady(savedInstanceState: Bundle?, viewModel: VM) {}
+    open fun onViewModelReady(viewModel: VM) {}
 }

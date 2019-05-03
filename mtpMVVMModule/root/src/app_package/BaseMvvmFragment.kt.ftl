@@ -15,30 +15,25 @@ import io.reactivex.disposables.CompositeDisposable
 import ir.rainyday.android.common.helpers.*
 
 
-
-abstract class BaseMvvmFragment<VM : BaseViewModel> : androidx.fragment.app.Fragment() {
+abstract class BaseMvvmFragment<VM : BaseViewModel> : BaseFragment() {
 
     protected val disposable by lazy { CompositeDisposable() }
     protected var viewModel: VM? = null
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return context!!.inflateLayout(getContentView(), container)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = generateViewModel()
-        setupView()
+        if (viewModel != null) {
+            subscribeEvents()
+            onViewModelReady(viewModel!!)
+        }
 
-        if (viewModel != null)
-            onReady(savedInstanceState, viewModel!!)
-        else
-            onReady(savedInstanceState)
     }
 
-    private fun setupView() {
-        viewModel?.observeEvent(this, HttpErrorEvent::class.java, Observer { errorEvent -> onHttpError(errorEvent) })
-        viewModel?.observeEvent(this, MessageEvent::class.java, Observer { event -> onMessageEvent(event) })
+    override fun onDestroy() {
+        disposable.clear()
+        super.onDestroy()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -48,23 +43,18 @@ abstract class BaseMvvmFragment<VM : BaseViewModel> : androidx.fragment.app.Frag
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        viewModel?.onRequestPermissionsResult(requestCode,permissions, grantResults)
+        viewModel?.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 
-
-    override fun onPause() {
-        activity?.dismissKeyboard()
-        super.onPause()
-    }
-
-    override fun onDestroy() {
-        disposable.clear()
-        super.onDestroy()
+    //region Events
+    private fun subscribeEvents() {
+        viewModel?.observeEvent(this, HttpErrorEvent::class.java, Observer { errorEvent -> onHttpError(errorEvent) })
+        viewModel?.observeEvent(this, MessageEvent::class.java, Observer { event -> onMessageEvent(event) })
     }
 
     protected open fun onHttpError(event: HttpErrorEvent?) {
         event?.error?.localizedDescription?.let {
-            context?.errorToast(it,duration = Toast.LENGTH_LONG)
+            context?.errorToast(it, duration = Toast.LENGTH_LONG)
             event.handled = true
         }
     }
@@ -81,9 +71,8 @@ abstract class BaseMvvmFragment<VM : BaseViewModel> : androidx.fragment.app.Frag
             event.handled = true
         }
     }
+    //endregion
 
-    abstract fun getContentView(): Int
     open fun generateViewModel(): VM? = null
-    open fun onReady(savedInstanceState: Bundle?){}
-    open fun onReady(savedInstanceState: Bundle?, viewModel: VM) {}
+    open fun onViewModelReady(viewModel: VM) {}
 }

@@ -19,7 +19,10 @@ class ${moduleName}Fragment : BaseMvvmFragment<${moduleName}ViewModel>() {
     }
 
 
-    override fun onReady(savedInstanceState: Bundle?, viewModel: ${moduleName}ViewModel) {
+    override fun onReady(savedInstanceState: Bundle?) {
+    }
+
+    override fun onViewModelReady(viewModel: ${moduleName}ViewModel) {
         editText twoWay viewModel.text
         submitButton.setOnClickListener { viewModel.doSomething() }
     }

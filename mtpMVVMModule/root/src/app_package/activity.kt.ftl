@@ -20,9 +20,12 @@ class ${moduleName}Activity : BaseMvvmActivity<${moduleName}ViewModel>() {
     }
 
 
-    override fun onReady(savedInstanceState: Bundle?, viewModel: ${moduleName}ViewModel) {
+    override fun onReady(savedInstanceState: Bundle?) {
        // supportActionBar?.displayBackButton()
         title = getString(R.string.activity_${moduleNameLower}_title)
+    }
+
+    override fun onViewModelReady(viewModel: ${moduleName}ViewModel) {
         editText twoWay viewModel.text
         submitButton.setOnClickListener { viewModel.doSomething() }
     }

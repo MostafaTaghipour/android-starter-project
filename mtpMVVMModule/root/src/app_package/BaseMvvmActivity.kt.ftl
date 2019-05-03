@@ -1,80 +1,39 @@
 package ${appPackage}.modules.shared.base
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.Gravity
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
 import ${appPackage}.R
 import ${appPackage}.helpers.*
 import ${appPackage}.modules.shared.events.*
 import io.reactivex.disposables.CompositeDisposable
-import ir.rainyday.android.common.helpers.dismissKeyboard
-import ir.rainyday.android.common.helpers.launchInternetSetting
 import ir.rainyday.android.common.helpers.toast
-import ir.rainyday.fontmanager.FontManager
-import ir.rainyday.localemanager.LocaleManager
-import ir.rainyday.thememanager.ThemeManager
 
 
-
-abstract class BaseMvvmActivity<VM : BaseViewModel> : AppCompatActivity() {
+abstract class BaseMvvmActivity<VM : BaseViewModel> : BaseActivity() {
 
     protected var viewModel: VM? = null
     protected val disposable by lazy { CompositeDisposable() }
 
-
-    override fun attachBaseContext(newBase: Context) {
-        val localeBase = LocaleManager.getInstance().wrapContext(newBase)
-        val wrapContext = FontManager.wrapContext(localeBase)
-        super.attachBaseContext(wrapContext)
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        ThemeManager.getInstance().applyTheme(this)
-        setContentView(getContentView())
+
         viewModel = generateViewModel()
-        setupView()
-
-        if (viewModel != null)
-            onReady(savedInstanceState, viewModel!!)
-        else
-            onReady(savedInstanceState)
-    }
-
-
-    private fun setupView() {
-        findViewById<Toolbar>(R.id.toolbar).let {
-            setSupportActionBar(it)
+        if (viewModel != null) {
+            subscribeEvents()
+            onViewModelReady(viewModel!!)
         }
 
-        viewModel?.observeEvent(this, NoInternetAccessEvent::class.java, Observer { event -> onLostInternetConnection(event) })
-        viewModel?.observeEvent(this, HttpErrorEvent::class.java, Observer { event -> onHttpError(event) })
-        viewModel?.observeEvent(this, MessageEvent::class.java, Observer { event -> onMessageEvent(event) })
-        viewModel?.observeEvent(this, NavigationEvent::class.java, Observer { event -> onNavigationRequest(event) })
-        viewModel?.observeEvent(this, FinishEvent::class.java, Observer { event -> onFinishEvent(event) })
-
     }
 
-
-    override fun onPause() {
-        dismissKeyboard()
-        super.onPause()
-    }
 
     override fun onDestroy() {
         disposable.clear()
         super.onDestroy()
     }
 
-    override fun onNewIntent(intent: Intent) {
-        super.onNewIntent(intent)
-        setIntent(intent)
-    }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -87,6 +46,15 @@ abstract class BaseMvvmActivity<VM : BaseViewModel> : AppCompatActivity() {
     }
 
 
+    //region Events
+    private fun subscribeEvents() {
+        viewModel?.observeEvent(this, NoInternetAccessEvent::class.java, Observer { event -> onLostInternetConnection(event) })
+        viewModel?.observeEvent(this, HttpErrorEvent::class.java, Observer { event -> onHttpError(event) })
+        viewModel?.observeEvent(this, MessageEvent::class.java, Observer { event -> onMessageEvent(event) })
+        viewModel?.observeEvent(this, NavigationEvent::class.java, Observer { event -> onNavigationRequest(event) })
+        viewModel?.observeEvent(this, FinishEvent::class.java, Observer { event -> onFinishEvent(event) })
+
+    }
 
     private fun onLostInternetConnection(event: NoInternetAccessEvent?) {
         event?.let {
@@ -127,9 +95,8 @@ abstract class BaseMvvmActivity<VM : BaseViewModel> : AppCompatActivity() {
 //            Navigator.logout(googleSignInHelper)
 //        }
     }
+    //endregion
 
-    abstract fun getContentView(): Int
     open fun generateViewModel(): VM? = null
-    open fun onReady(savedInstanceState: Bundle?) {}
-    open fun onReady(savedInstanceState: Bundle?, viewModel: VM) {}
+    open fun onViewModelReady(viewModel: VM) {}
 }
