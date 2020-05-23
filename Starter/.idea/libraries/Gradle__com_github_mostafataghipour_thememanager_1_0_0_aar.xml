@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.mostafataghipour:thememanager:1.0.0@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/thememanager-1.0.0.aar/2001254d081672435962be4be09a56ef/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/thememanager-1.0.0.aar/2001254d081672435962be4be09a56ef/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.mostafataghipour/thememanager/1.0.0/e88fa1281d7557be0ab322792718275b9bf7eab8/thememanager-1.0.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

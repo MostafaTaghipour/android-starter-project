@@ -7,6 +7,7 @@ import ir.rainyday.android.common.helpers.toIso8601Date
 interface  CredentialsKeysRepo{
     val isSessionValid: Boolean
     var accessToken: String
+    var refreshToken: String
     var notificationClientId: String
      var expires: String
 
@@ -19,6 +20,7 @@ class CredentialsKeysRepoImp(private val preferences: SharedPreferences) :Creden
     companion object {
         private const val DEFAULT_STRING = ""
         private const val ACCESS_TOKEN_KEY = "access_token"
+        private const val REFRESH_TOKEN_KEY = "refresh_token"
         private const val EXPIRE_KEY = "expire_token"
         private const val NOTIFICATION_CLIENT_KEY: String = "notification_client_id"
     }
@@ -46,6 +48,13 @@ class CredentialsKeysRepoImp(private val preferences: SharedPreferences) :Creden
         }
 
 
+    private var _refreshToken: String = DEFAULT_STRING
+    override var refreshToken: String
+        get() = _refreshToken
+        set(value) {
+            _refreshToken = value
+        }
+
     private var _notificationClientId: String = DEFAULT_STRING
     override var notificationClientId: String
         get() = _notificationClientId
@@ -61,6 +70,7 @@ class CredentialsKeysRepoImp(private val preferences: SharedPreferences) :Creden
     private fun load() {
         expires = preferences.getString(EXPIRE_KEY, DEFAULT_STRING) ?: ""
         accessToken = preferences.getString(ACCESS_TOKEN_KEY, DEFAULT_STRING) ?: ""
+        refreshToken = preferences.getString(REFRESH_TOKEN_KEY, DEFAULT_STRING) ?: ""
         notificationClientId = preferences.getString(NOTIFICATION_CLIENT_KEY, DEFAULT_STRING) ?: ""
     }
 
@@ -68,12 +78,14 @@ class CredentialsKeysRepoImp(private val preferences: SharedPreferences) :Creden
         val editor = preferences.edit()
         editor.putString(EXPIRE_KEY, expires)
         editor.putString(ACCESS_TOKEN_KEY, accessToken)
+        editor.putString(REFRESH_TOKEN_KEY, refreshToken)
         editor.putString(NOTIFICATION_CLIENT_KEY, notificationClientId)
         editor.apply()
     }
 
     override fun clear() {
         accessToken = DEFAULT_STRING
+        refreshToken = DEFAULT_STRING
         expires = DEFAULT_STRING
         notificationClientId = DEFAULT_STRING
         sync()

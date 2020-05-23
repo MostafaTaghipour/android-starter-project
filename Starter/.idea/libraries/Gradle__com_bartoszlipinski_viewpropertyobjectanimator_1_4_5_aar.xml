@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="Gradle: com.bartoszlipinski:viewpropertyobjectanimator:1.4.5@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-viewpropertyobjectanimator-1.4.5.aar/882d17b2dff2a16d7458802b2a8d5fbd/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-viewpropertyobjectanimator-1.4.5.aar/882d17b2dff2a16d7458802b2a8d5fbd/res" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.bartoszlipinski/viewpropertyobjectanimator/1.4.5/b1a031a7f32dee2e95dc9f177210f6bdc7d04bf4/viewpropertyobjectanimator-1.4.5-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.bartoszlipinski/viewpropertyobjectanimator/1.4.5/213debe008de9cf51e2fe5f90272dacb2245a4d2/viewpropertyobjectanimator-1.4.5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

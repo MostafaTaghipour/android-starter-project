@@ -7,6 +7,7 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
 import android.util.ArrayMap
+import java.util.*
 
 
 /**
@@ -16,30 +17,32 @@ object CurrentApp {
     val versionCode: Int?
         get() {
             GlobalAppContext.instance.applicationContext?.let {
-                return getBuildConfigValue( it,"VERSION_CODE") as? Int
+                return getBuildConfigValue(it, "VERSION_CODE") as? Int
             }
-           return null
+            return null
         }
     val versionName: String?
         get() {
             GlobalAppContext.instance.applicationContext?.let {
-                return getBuildConfigValue( it,"VERSION_NAME") as? String
+                return getBuildConfigValue(it, "VERSION_NAME") as? String
             }
             return null
         }
     val Id: String?
-    get() {
-        GlobalAppContext.instance.applicationContext?.let {
-            return getBuildConfigValue( it,"APPLICATION_ID") as? String
+        get() {
+            GlobalAppContext.instance.applicationContext?.let {
+                return getBuildConfigValue(it, "APPLICATION_ID") as? String
+            }
+            return null
         }
-        return null
-    }
     val packageName: String? = GlobalAppContext.instance.applicationContext?.packageName
-
+    val sessionId: String? by lazy {
+        UUID.randomUUID().toString()
+    }
     val name: String?
         get() {
             GlobalAppContext.instance.applicationContext?.let {
-                return  it.applicationInfo.loadLabel(it.packageManager).toString()
+                return it.applicationInfo.loadLabel(it.packageManager).toString()
             }
             return null
         }
@@ -47,7 +50,7 @@ object CurrentApp {
     val isDebugMode: Boolean
         get() {
             GlobalAppContext.instance.applicationContext?.let {
-                return  (getBuildConfigValue( it,"DEBUG") as? Boolean) ?: true
+                return (getBuildConfigValue(it, "DEBUG") as? Boolean) ?: true
             }
             return true
         }
@@ -98,7 +101,7 @@ object CurrentApp {
     }
 }
 
-fun Context.isAppAvailable(packageName:String) : Boolean{
+fun Context.isAppAvailable(packageName: String): Boolean {
     return try {
         packageManager.getPackageInfo(packageName, PackageManager.GET_ACTIVITIES)
         true

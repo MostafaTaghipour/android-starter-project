@@ -7,12 +7,13 @@ import androidx.room.TypeConverters
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import ir.rainyday.android.common.helpers.ioThread
+import ir.rainyday.android.starter.data.model.entity.SampleEntity
 import java.util.*
 
 
 @Database(
         entities = [
-            //  SampleEntity::class
+              SampleEntity::class
             // add entities here
         ],
         version = 1,

@@ -440,67 +440,6 @@ object DateHelper {
         c.add(calendarField, amount)
         return c.time
     }
-
-
-//    private val SECOND_MILLIS = 1000
-//    private val MINUTE_MILLIS = 60 * SECOND_MILLIS
-//    private val HOUR_MILLIS = 60 * MINUTE_MILLIS
-//    private val DAY_MILLIS = 24 * HOUR_MILLIS
-//    private val WEEK_MILLIS = 7 * DAY_MILLIS
-//    private val MONTH_MILLIS = 30 * DAY_MILLIS
-//    private val YEAR_MILLIS = 365 * DAY_MILLIS
-//
-//    fun getTimeAgo(context: Context, date: Date): String {
-//        var time = date.time
-//        if (time < 1000000000000L) {
-//            // if timestamp given in seconds, convert to millis
-//            time *= 1000
-//        }
-//
-//        val now = Calendar.getInstance().time.time
-//        if (time > now || time <= 0) {
-//            return time.toString()
-//        }
-//
-//        val diff = now - time
-//        return if (diff < 10 * SECOND_MILLIS) {
-//            context.getString(R.string.just_now)
-//        } else if (diff < MINUTE_MILLIS) {
-//            context.getString(R.string.moments_ago)
-//        } else if (diff < 2 * MINUTE_MILLIS) {
-//            context.getString(R.string.a_min_ago)
-//        } else if (diff < 1 * HOUR_MILLIS) {
-//          context.getString(R.string.min_ago,  (diff / MINUTE_MILLIS).toString())
-//        }
-//        else if (diff < 2 * HOUR_MILLIS) {
-//            context.getString(R.string.an_hour_ago)
-//        } else if (diff < 1 * DAY_MILLIS) {
-//            context.getString(R.string.hour_ago,  (diff / HOUR_MILLIS).toString())
-//        }
-//
-//        else if (diff < 2 * DAY_MILLIS) {
-//            context.getString(R.string.yesterday)
-//        } else if (diff < 1 * WEEK_MILLIS) {
-//            context.getString(R.string.day_ago,  (diff / DAY_MILLIS).toString())
-//        }
-//
-//        else if (diff < 2 * WEEK_MILLIS) {
-//            context.getString(R.string.last_week)
-//        } else if (diff < 1 * MONTH_MILLIS) {
-//            context.getString(R.string.week_ago,  (diff / WEEK_MILLIS).toString())
-//        }
-//        else if (diff < 2 * MONTH_MILLIS) {
-//            context.getString(R.string.last_month)
-//        } else if (diff < 1 * YEAR_MILLIS) {
-//            context.getString(R.string.month_ago,  (diff / MONTH_MILLIS).toString())
-//        }
-//        else if (diff < 2 * YEAR_MILLIS) {
-//            context.getString(R.string.last_year)
-//        } else  {
-//            context.getString(R.string.year_ago,  (diff / YEAR_MILLIS).toString())
-//        }
-//
-//    }
 }
 
 
@@ -571,11 +510,6 @@ class TimeAgo(protected var context: Context) {
 
 
 
-
-
-
-
-
 fun String.toDate(format: String = "dd-MM-yyyy", locale: Locale = Locale.ENGLISH): Date? {
     return DateHelper.stringToDate(this, format, locale)
 }
@@ -601,6 +535,9 @@ fun Date.toFormattedString(format: String = "MM/dd/yyyy HH:mm:ss", locale: Local
     return SimpleDateFormat(format, locale).format(this)
 }
 
+/*
+https://github.com/samanzamani/PersianDate
+ */
 fun PersianDate.toFormattedString(format: String = "Y/m/d"): String? {
     return PersianDateFormat(format).format(this)
 }

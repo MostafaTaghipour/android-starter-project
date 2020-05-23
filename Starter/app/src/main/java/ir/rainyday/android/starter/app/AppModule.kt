@@ -84,6 +84,7 @@ val appModule = module {
         client.readTimeout(timeout, TimeUnit.SECONDS)
         client.connectTimeout(timeout, TimeUnit.SECONDS)
         client.addInterceptor(TokenInterceptor())
+        client.authenticator(TokenAuthenticator())
         client.addInterceptor(UserAgentInterceptor(CurrentDevice.userAgent!!))
 
         // enable logging for debug builds
@@ -94,7 +95,10 @@ val appModule = module {
                 .build()
         client.addInterceptor(logging)
 
-        client.authenticator(TokenAuthenticator())
+
+        if(BuildConfig.DEBUG){
+            client.addInterceptor(MockInterceptor())
+        }
 
         client.build()
     }
